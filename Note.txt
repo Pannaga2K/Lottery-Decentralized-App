@@ -1,0 +1,63 @@
+=============== THIRD_WEB ===============
+
+useMetamask()
+    - INITIAL STEP TO CONNECT TO METAMASK THAT OPENS METAMASK WINDOW
+    - EX
+        - const connectWithMetamask = useMetamask();
+        - onClick={connectWithMetamask}
+
+useAddress()
+    - FETCH THE CURRENT LOGGED IN ADDRESS
+    - EX
+        - const address = useAddress();
+
+useContract(<CONTRACT_ADDRESS>)
+    - FETCH THE CONTRACT W.R.T CONTRACT_ADDRESS
+    - EX
+        - const { contract, isLoading } = useContractAddress(CONTRACT_ADDRESS);
+    - USED AS PARAM FOR useContractRead() & useContractWrite()
+
+-------------------- FUNCTIONS --------------------
+
+===== READ =====
+
+useContractRead(contract, <READ_FUNCTION>)
+    - READ_FUNCTION
+        - maxTickets
+            - RETURNS THE MAXIMUM NUMBER OF TICKETS AVAILABLE IN THE DRAW
+        - RemainingTickets
+            - RETURNS THE REMAINING NUMBER OF TICEKTS AVAILABLE IN THE DRAW
+        - CurrentWinningReward
+            - RETURNS THE CURRENT WINNING REWARD FOR THE DRAW
+        - ticketPrice
+            - RETURNS THE ACTUAL TICKET PRICE IS WEI
+            - CAN BE CONVERTED TO ETH BY USING ether NODE PACKAGE
+            - 10000000000000000 WEI == 0.01 ETH
+        - ticketCommission
+            - RETURNS THE SERVICE FEE FOR THE TICKET
+            - 1000000000000000 WEI == 0.001 ETH
+        - lotteryOperator
+            - RETURNS THE ADDRESS OF ADMIN
+        - lastWinner
+            - RETURNS THE LAST WINNER'S ADDRESS
+        - lastWinnerAmount
+            - RETURNS THE AMOUNT GAINED BY THE LAST WINNER
+        - getTickets
+            - RETURNS THE ARRAY OF TICKETS PRESENT IN THE DRAW
+        - expiration
+            - EXPIRATION OF THE DRAW
+        - operatorTotalCommission
+            - RETURNS THE TOTAL OPERATOR COMMISSION
+
+useContractWrite(contract, <WRITE_FUNCTION>)
+    - WRITE_FUNCTION
+        - BuyTickets
+            - BUY THE TICKETS
+        - DrawWinnerTicket
+            - DRAWS THE WINNER TICKET
+        - RefundAll
+            - REFUNDS ALL THE TICKETS
+        - WithdrawWinnings
+            - WITHDRAW THE WINNINGS
+        - restartDraw
+            - RESTARTS THE DRAW
